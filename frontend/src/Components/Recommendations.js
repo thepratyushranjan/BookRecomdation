@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './Recommendations.css'; 
+import './Recommendations.css';
 
 const Recommendations = () => {
     const [recommendations, setRecommendations] = useState([]);
-    const [sortField, setSortField] = useState('title'); 
-    const [sortDirection, setSortDirection] = useState('asc'); 
+    const [sortField, setSortField] = useState('title');
+    const [sortDirection, setSortDirection] = useState('asc');
     const [filters, setFilters] = useState({
         genre: '',
         rating: '',
@@ -36,6 +36,24 @@ const Recommendations = () => {
         }));
     };
 
+    const handleLike = (id) => {
+        axios.post(`http://localhost:8000/api/recommendations/${id}/like/`)
+            .then(() => fetchRecommendations())
+            .catch(err => console.log(err));
+    };
+
+    const handleAddComment = (id, text) => {
+        axios.post(`http://localhost:8000/api/recommendations/${id}/comment/`, { text })
+            .then(() => fetchRecommendations())
+            .catch(err => console.log(err));
+    };
+
+    const handleDeleteComment = (commentId) => {
+        axios.delete(`http://localhost:8000/api/recommendations/comment/${commentId}/`)
+            .then(() => fetchRecommendations())
+            .catch(err => console.log(err));
+    };
+
     const sortedRecommendations = [...recommendations].sort((a, b) => {
         const aValue = sortField === 'publication_date' ? new Date(a[sortField]) : a[sortField];
         const bValue = sortField === 'publication_date' ? new Date(b[sortField]) : b[sortField];
@@ -49,9 +67,9 @@ const Recommendations = () => {
 
     const renderSortIcon = (field) => {
         if (sortField === field) {
-            return sortDirection ==='▼';
+            return sortDirection === 'asc' ? '▲' : '▼';
         }
-        return '▲'; 
+        return null;
     };
 
     return (
@@ -112,13 +130,41 @@ const Recommendations = () => {
                             <td>{book.rating}</td>
                             <td>{new Date(book.publication_date).toLocaleDateString()}</td>
                             <td>{book.genre}</td>
-                            <td>{book.likes_count}</td>
                             <td>
-                                {book.comments.length > 0 ? (
-                                    book.comments.map(comment => (
-                                        <div key={comment.id}>{comment.text}</div>
-                                    ))
-                                ) : 'No comments'}
+                                {book.likes_count}
+                                <button
+                                    style={{ marginLeft: '10px' }}
+                                    onClick={() => handleLike(book.id)}
+                                >
+                                    Like
+                                </button>
+                            </td>
+                            <td>
+                                <div className="comment-section">
+                                    {book.comments.length > 0 ? (
+                                        book.comments.map(comment => (
+                                            <div key={comment.id}>
+                                                {comment.text}
+                                                <button
+                                                    style={{ marginLeft: '10px' }}
+                                                    onClick={() => handleDeleteComment(comment.id)}
+                                                >
+                                                    Delete
+                                                </button>
+                                            </div>
+                                        ))
+                                    ) : 'No comments'}
+                                    <div>
+                                        <input
+                                            type="text"
+                                            placeholder="Add a comment"
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter') handleAddComment(book.id, e.target.value);
+                                            }}
+                                            style={{ marginTop: '10px' }} /* Optional: Adds space above the input */
+                                        />
+                                    </div>
+                                </div>
                             </td>
                             <td>
                                 {book.cover_image && (

@@ -4,7 +4,7 @@ class BookRecommendation(models.Model):
     title = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
     description = models.TextField()
-    cover_image = models.URLField(blank=True, null=True)
+    cover_image = models.URLField(blank=True, null=True, max_length=500)
     rating = models.FloatField(blank=True, null=True)
     publication_date = models.DateField(blank=True, null=True)
     genre = models.CharField(max_length=30, blank=True, null=True)  # Add this line
