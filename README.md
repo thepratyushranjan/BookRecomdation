@@ -60,11 +60,9 @@ yarn preview # serve build (on port 3000, default ) | (for production onlly)
 ```Integration with Google Books API:-
 url:- 
 http://localhost:8000/api/search/?q=AWS
-# Output:-
-![Book_1](https://github.com/user-attachments/assets/daf8222d-2c71-430c-9f94-1c7171e2c023)
-
 
 ``` 
-
+# Output:-
+![Book_1](https://github.com/user-attachments/assets/daf8222d-2c71-430c-9f94-1c7171e2c023)
 
 
