@@ -50,6 +50,9 @@ yarn start # run react on seperate dev server (on port 3000, default only) | (fo
 
 yarn build # craete build on watch (for production and development both) 
 
-yarn preview # serve build (on port 3000, default ) | (for production onlly) 
+yarn preview # serve build (on port 3000, default ) | (for production onlly)
 
-# All API with UI
+```
+
+
+
