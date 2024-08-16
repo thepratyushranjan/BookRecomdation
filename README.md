@@ -65,4 +65,45 @@ http://localhost:8000/api/search/?q=AWS
 # Output:-
 ![Book_1](https://github.com/user-attachments/assets/daf8222d-2c71-430c-9f94-1c7171e2c023)
 
+```Community Book Recommendations(Add New Book ):-
+url:-Post Request
+
+http://localhost:8000/api/recommendations/
+
+``` 
+# Output:-
+![books_2](https://github.com/user-attachments/assets/f32ea832-5486-4a43-932c-efda97ddd9de)
+
+```Community Book Recommendations(Click blue button  Book Recommendations):-
+url:- Get Request
+
+http://localhost:8000/api/recommendations/
+
+``` 
+# Output:-![book_3](https://github.com/user-attachments/assets/fe9a4b2c-8496-423d-8c92-38b74d109192)
+
+```Community Book Recommendations(Search Filter):-
+url:- Get filter request for genre, rating, and publication date
+
+
+http://localhost:8000/api/recommendations/?genre=Education&rating=5&publication_date=2024-08-17/
+
+# Individual also used
+
+ 1:-  rating=>  http://localhost:8000/api/recommendations/?genre=&rating=5&publication_date=
+ 2:-  genre=>  http://localhost:8000/api/recommendations/?genre=Education&rating=&publication_date=
+ 3:-  publication date=>  http://localhost:8000/api/recommendations/?genre=&rating=&publication_date=publication_date=2024-08-17/
+
+``` 
+# Output_1:-![cf](https://github.com/user-attachments/assets/7e68f8b4-66cb-4e7a-a53c-c61f91fcfd1b)
+# Output_2:-![books_4_f](https://github.com/user-attachments/assets/dfd29e47-f1d2-4d6c-9812-13cb791eea7b)
+
+# Output_3:-![books_6_f](https://github.com/user-attachments/assets/f05e47c4-b8e8-4d96-ba5c-60cf54827448)
+
+# Output_4:-![books_8_f](https://github.com/user-attachments/assets/c4f85946-8081-4300-8da2-f8ff5d05f115)
+
+
+
+
+
 
