@@ -188,3 +188,23 @@ html{
     text-align: justify;
     font-size: 13px;
 }
+
+
+
+
+.add-book-button {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    padding: 10px 20px; /* Some padding */
+    text-align: center; /* Centered text */
+    text-decoration: none; /* No underline */
+    display: inline-block; /* Make the button inline-block */
+    font-size: 16px; /* Increase font size */
+    margin: 10px 2px; /* Margin */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.add-book-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

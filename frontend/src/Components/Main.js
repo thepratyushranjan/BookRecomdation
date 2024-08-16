@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import Card from "./Card";
 import axios from "axios";
+import Card from "./Card";
+import FromModal from "./FormModal";
+// import FromModal from "./FromModal"; // Import the Modal component
 
 const Main = () => {
     const [search, setSearch] = useState("");
     const [bookData, setData] = useState([]);
+    const [isModalOpen, setModalOpen] = useState(false);
 
     const fetchBooks = () => {
         axios.get(`http://localhost:8000/api/search/?q=${search}`)
@@ -20,6 +23,14 @@ const Main = () => {
 
     const handleClick = () => {
         fetchBooks();
+    };
+
+    const handleAddNewBook = () => {
+        setModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
     };
 
     return (
@@ -41,14 +52,23 @@ const Main = () => {
                         <button onClick={handleClick}>
                             <i className="fas fa-search"></i>
                         </button>
+                        <button onClick={handleAddNewBook} className="add-book-button">
+                        Add New Book
+                    </button>
                     </div>
                     <img src="./images/bg2.png" alt="" />
+                    
                 </div>
             </div>
 
             <div className="container">
                 <Card book={bookData} />
             </div>
+
+            <FromModal
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+            />
         </>
     );
 };
