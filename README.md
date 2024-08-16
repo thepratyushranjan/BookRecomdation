@@ -104,6 +104,29 @@ http://localhost:8000/api/recommendations/?genre=Education&rating=5&publication_
 
 
 
+```Community Book Recommendations(Sorting):-
+url:- Get Sorting request for genre, rating, and publication date
+
+ 1:-  rating=> http://localhost:8000/api/recommendations/?sort=rating  or http://localhost:8000/api/recommendations/?sort=-rating
+ 2:-  genre=> http://localhost:8000/api/recommendations/?sort=genre  or http://localhost:8000/api/recommendations/?sort=-genre
+ 3:-  publication date=> http://localhost:8000/api/recommendations/?sort=publication_date  or http://localhost:8000/api/recommendations/?sort=-publication_date
+
+``` 
+
+# Output_1:-![books_5](https://github.com/user-attachments/assets/e49651fb-1a93-48af-9e66-5a5f176352ba)
+
+# Output_2:-![books_7](https://github.com/user-attachments/assets/d99ef936-b642-4a47-ad61-bb10d537ed4f)
+
+```Community Book Recommendations(Like Comment):-
+url:- Post Req Like and Comment
+
+ 1:-  Like=> http://localhost:8000/api/recommendations/3/like/
+ 2:-  Comment=> http://localhost:8000/api/recommendations/3/comment/
+
+``` 
+
+# Output_1:-![cl](https://github.com/user-attachments/assets/6b52b588-31f7-40d1-b464-54cf5fabf576)
+
 
 
 
