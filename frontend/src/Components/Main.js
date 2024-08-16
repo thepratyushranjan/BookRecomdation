@@ -1,17 +1,19 @@
+// src/Main.js
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Card from "./Card";
 import FromModal from "./FormModal";
-// import FromModal from "./FromModal"; // Import the Modal component
 
 const Main = () => {
     const [search, setSearch] = useState("");
     const [bookData, setData] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
+    const navigate = useNavigate(); // Use useNavigate instead of useHistory
 
     const fetchBooks = () => {
         axios.get(`http://localhost:8000/api/search/?q=${search}`)
-            .then(res => setData(res.data.items)) // Adjust this based on your API response structure
+            .then(res => setData(res.data.items)) // Adjust based on your API response structure
             .catch(err => console.log(err));
     };
 
@@ -31,6 +33,10 @@ const Main = () => {
 
     const handleCloseModal = () => {
         setModalOpen(false);
+    };
+
+    const handleNavigateToRecommendations = () => {
+        navigate("/recommendations"); // Use navigate instead of history.push
     };
 
     return (
@@ -53,11 +59,13 @@ const Main = () => {
                             <i className="fas fa-search"></i>
                         </button>
                         <button onClick={handleAddNewBook} className="add-book-button">
-                        Add New Book
-                    </button>
+                            Add New Book
+                        </button>
+                        <button onClick={handleNavigateToRecommendations} className="recommendations-button">
+    Recommendations Book
+</button>
                     </div>
                     <img src="./images/bg2.png" alt="" />
-                    
                 </div>
             </div>
 

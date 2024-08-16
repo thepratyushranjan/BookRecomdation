@@ -1,0 +1,66 @@
+.recommendations {
+    text-align: center; 
+}
+
+.recommendations h2 {
+    margin: 20px 0; 
+}
+
+.recommendations table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto; 
+}
+
+.recommendations th, .recommendations td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.recommendations th {
+    background-color: red; 
+    color: white;
+    position: relative; 
+}
+
+.recommendations td {
+    background-color: black; /* Black background for body cells */
+    color: white; /* White text for body cells */
+}
+
+.recommendations img {
+    max-width: 100px;
+    height: auto;
+    display: block;
+    margin: 0 auto; 
+}
+
+th.sortable {
+    cursor: pointer;
+    padding: 10px;
+    position: relative; 
+    transition: background-color 0.3s ease; 
+}
+
+th.sortable::after {
+    content: ''; 
+    font-size: 1.2em;
+    color: white; 
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+th.sortable.asc::after {
+    content: '▲'; 
+}
+
+th.sortable.desc::after {
+    content: '▼';
+}
+
+th.sortable:hover {
+    background-color: #b30000; 
+    color: white; 
+}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './Modal.css'; // Import the CSS for styling
+import './Modal.css'; 
 
 const FromModal = ({ isOpen, onClose }) => {
     const [title, setTitle] = useState("");
@@ -11,14 +11,14 @@ const FromModal = ({ isOpen, onClose }) => {
     const [coverImage, setCoverImage] = useState("");
     const [rating, setRating] = useState("");
     const [publicationDate, setPublicationDate] = useState(null);
-    const [user, setUser] = useState("");
+    const [genre, setGenre] = useState(""); 
     const [error, setError] = useState("");
 
     const formatPublicationDate = (date) => {
         if (!date) return "";
         const year = date.getFullYear();
-        const month = ("0" + (date.getMonth() + 1)).slice(-2); // Add leading zero if needed
-        const day = ("0" + date.getDate()).slice(-2); // Add leading zero if needed
+        const month = ("0" + (date.getMonth() + 1)).slice(-2); 
+        const day = ("0" + date.getDate()).slice(-2);
         return `${year}-${month}-${day}`;
     };
 
@@ -33,10 +33,10 @@ const FromModal = ({ isOpen, onClose }) => {
             title,
             author,
             description,
-            cover_image: coverImage,
+            cover_image: coverImage || "", // Ensure cover_image is an empty string if not provided
             rating,
             publication_date: formattedDate,
-            user
+            genre // Include genre in the payload
         })
         .then(response => {
             console.log("Book added:", response.data);
@@ -110,11 +110,11 @@ const FromModal = ({ isOpen, onClose }) => {
                         />
                     </label>
                     <label>
-                        User:
+                        Genre:
                         <input
                             type="text"
-                            value={user}
-                            onChange={(e) => setUser(e.target.value)}
+                            value={genre}
+                            onChange={(e) => setGenre(e.target.value)}
                         />
                     </label>
                     <button type="submit">Submit</button>
